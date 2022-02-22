@@ -1,3 +1,3 @@
-# MEmory
+# Memory
 
 Gioco di carte Memory

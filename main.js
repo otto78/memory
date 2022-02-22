@@ -22,7 +22,19 @@ startBtn.addEventListener('click', ()=>{
     let name = document.querySelector('#name')
 
     startGame.addEventListener('click', ()=>{
-        console.log('click stargame' + $(name.value))
+        
+        input.remove()
+        let player = name.value
+        nuovaPartita(player)
+
+        let playerDiv = document.createElement('div')
+        playerDiv.classList.add('m-4', 'text-center', 'points')
+        playerDiv.innerHTML =`
+            <p><span class="mx-3">${player}</span>0<span class="mx-2">|</span>0<span class="mx-3">Computer</span></p>
+            
+        `
+        tavolo.after(playerDiv)
+
     })
 
 })

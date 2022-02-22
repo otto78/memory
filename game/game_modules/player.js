@@ -1,6 +1,6 @@
 class Player {
-    constructor(nome){
-        this.playerName = nome;
+    constructor(name){
+        this.playerName = name;
         this.playerCards = [];
     }
 }

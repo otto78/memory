@@ -1,8 +1,8 @@
 import {Game} from './game.js'
 
-function nuovaPartita(){
+function nuovaPartita(player){
     let partita = new Game();
-    partita.nuovoGioco()
+    partita.nuovoGioco(player)
     
 }
 
