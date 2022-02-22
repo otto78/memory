@@ -1,0 +1,38 @@
+
+body {
+    background-image: url(./media/Background_Anthracite.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(8px);
+}
+
+#tavolo{
+    min-height: 70vh;
+    background-image: url(./media/table-background.jpeg);
+    background-size: cover;
+    border: 5px solid rgb(40, 21, 21);
+    border-radius: 50px;
+    opacity: 0.8;
+    
+}
+
+.fade-in{
+    animation-name: fade-in;
+    animation-duration: 1s;
+}
+
+@keyframes fade-in{
+    from {
+        opacity:0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity:1;
+        transform: translateY(0);
+    }
+}
+
+.fade-out{
+    transition: 1s;
+    opacity: 0;
+}
