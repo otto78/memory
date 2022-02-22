@@ -28,7 +28,7 @@ startBtn.addEventListener('click', ()=>{
         nuovaPartita(player)
 
         let playerDiv = document.createElement('div')
-        playerDiv.classList.add('m-4', 'text-center', 'points')
+        playerDiv.classList.add('m-4', 'text-center', 'points', 'fade-in')
         playerDiv.innerHTML =`
             <p><span class="mx-3">${player}</span>0<span class="mx-2">|</span>0<span class="mx-3">Computer</span></p>
             

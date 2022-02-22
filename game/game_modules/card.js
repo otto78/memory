@@ -1,8 +1,8 @@
 class Card {
-    constructor(tipo, rank, valore ) {
-    this.tipo = tipo;
-    this.rank =rank;
-    this.valore = valore;
+    constructor(forma, colore ) {
+    this.forma = forma;
+    this.colore = colore;
+    
     }
 }
 

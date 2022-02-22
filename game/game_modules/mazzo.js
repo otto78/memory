@@ -6,17 +6,17 @@ class Mazzo {
     }
     
     creaMazzo(){
-        let tipi =['picche', 'cuori', 'quadri', 'fiori'];
-        let ranks=['Asso', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Regina', 'Re'];
-        let valori =[1,2,3,4,5,6,7,8,9,10,11,12,13];
+        let forma =['cerchio', 'rombo',];
+        let colore=['blu', 'giallo', 'verde', 'rosso', 'arancione'];
+       
         
-        for(let i=0; i<tipi.length; i++){
-            for(let j=0; j<ranks.length; j++){
-                this.cards.push(new Card(tipi[i], ranks[j], valori[j]));
-                
-            }
-            
+        for(let i=0; i<colore.length; i++){
+            for(let j=0; j<forma.length; j++){
+                this.cards.push(new Card(colore[i], forma[j]));
+                this.cards.push(new Card(colore[i], forma[j]));         
+            }        
         }
+
     }
     
     
