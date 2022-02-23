@@ -44,8 +44,11 @@ class Game {
         //console.log(this.players);
         
         //console.log(mazzo)
-        //console.log(this.cardsInMddle)
-
+        console.log(this.cardsInMddle)
+        for(let i=0; i<20; i++){
+            this.cardsInMddle.cards[i].show()
+    
+        }
 
         
     }

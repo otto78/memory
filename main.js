@@ -24,6 +24,7 @@ startBtn.addEventListener('click', ()=>{
     startGame.addEventListener('click', ()=>{
         
         input.remove()
+        btnContainer.remove()
         let player = name.value
         nuovaPartita(player)
 
