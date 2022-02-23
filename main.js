@@ -12,7 +12,7 @@ startBtn.addEventListener('click', ()=>{
     input.classList.add("fade-in",);
        
     input.innerHTML=`
-    <input class="form-control rounded-pill text-center" type="text" name="name" id="name" placeholder="Dimmi come ti chiami...">
+    <input class="form-control rounded-pill text-center" type="text" name="name" id="name" placeholder="Dimmi come ti chiami..." autofocus>
     <button class="btn btn-dark rounded-pill my-2" id="startGame" type="button">Cominciamo</button>
     `
     btnContainer.append(input)

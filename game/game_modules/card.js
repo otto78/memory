@@ -12,7 +12,7 @@ class Card {
 
         let blu = "#0080fe"
         let giallo = "#da833b"
-        let verde = "#375543"
+        let verde = "#DAA520"
         let rosso = "#de0000"
         let viola = "#4a2356"
 
@@ -22,7 +22,7 @@ class Card {
         } else {
             shape.classList.add('rombo')
         }
-        
+
         if(this.colore == "blu"){
             card.style.borderColor = blu
             shape.style.backgroundColor = blu
@@ -45,12 +45,8 @@ class Card {
         }
 
 
-
-
-
-
         card.append(shape)
-        tavolo.append(card)
+        board.append(card)
 
     }
 

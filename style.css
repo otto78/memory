@@ -49,22 +49,29 @@ body {
     border: 3px solid black;
     border-radius: 8px;
     background-color: white;
-    margin: 10px;
+    margin: 15px 40px 15px 40px;
 
 }
+
+.board{
+    width: 800px;
+}
+
 
 .cerchio{
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: black;
+   
 }
 
 .rombo{
     height: 30px;
     width: 30px;
     transform: rotate(45deg);
-    background-color: black;
+    
     
     
 }
+
+

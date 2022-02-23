@@ -45,10 +45,19 @@ class Game {
         
         //console.log(mazzo)
         console.log(this.cardsInMddle)
+
+        let board = document.createElement('div')
+        board.style.width = "500"
+        board.setAttribute("id", "board")
+        board.classList.add("row", "justify-content-center", "align-items-center", "board")
+        tavolo.append(board)
+
         for(let i=0; i<20; i++){
             this.cardsInMddle.cards[i].show()
-    
         }
+        // for(let i=5; i<10; i++){
+        //     this.cardsInMddle.cards[i].show()
+        // }
 
         
     }
