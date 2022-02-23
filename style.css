@@ -47,15 +47,42 @@ h1{
 
 }
 
-.card-front{
+.card{
     height: 100px;
     width: 70px;
+    margin: 15px 40px 15px 40px;
     border: 3px solid black;
     border-radius: 8px;
-    background-color: white;
-    margin: 15px 40px 15px 40px;
 
+    
 }
+
+
+
+.card-front{
+   background-color: white;
+    
+}
+
+.card-back{   
+    background-color: rgb(38, 38, 38)    
+}
+
+.card-back:hover{
+    background-color: rgb(80, 80, 80) 
+}
+
+.card-logo{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    
+    background-image: url(./media/time.png);
+    background-size: contain;
+    
+}
+
+
 
 .board{
     width: 800px;
@@ -66,6 +93,7 @@ h1{
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    background-color: black;
    
 }
 
@@ -73,9 +101,39 @@ h1{
     height: 30px;
     width: 30px;
     transform: rotate(45deg);
-    
-    
-    
+    /* background-color: black;    */
+}
+
+.shape-blu{
+    background-color:#0080fe;
+}
+.shape-giallo{
+    background-color:#da833b;
+}
+.shape-verde{
+    background-color:#DAA520;
+}
+.shape-rosso{
+    background-color:#de0000;
+}
+.shape-viola{
+    background-color:#4a2356;
+}
+
+.border-blu{
+    border-color:#0080fe;
+}
+.border-giallo{
+    border-color:#da833b;
+}
+.border-verde{
+    border-color:#DAA520;
+}
+.border-rosso{
+    border-color:#de0000;
+}
+.border-viola{
+    border-color:#4a2356;
 }
 
 
