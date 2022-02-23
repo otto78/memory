@@ -47,9 +47,9 @@ class Game {
         console.log(this.cardsInMddle)
 
         let board = document.createElement('div')
-        board.style.width = "500"
+        //board.style.width = "500"
         board.setAttribute("id", "board")
-        board.classList.add("row", "justify-content-center", "align-items-center", "board")
+        board.classList.add("row", "justify-content-center", "board")
         tavolo.append(board)
 
         for(let i=0; i<20; i++){

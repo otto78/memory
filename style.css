@@ -6,6 +6,10 @@ body {
     backdrop-filter: blur(8px);
 }
 
+h1{
+    font-family: 'Architects Daughter', cursive; 
+}
+
 #tavolo{
     min-height: 70vh;
     background-image: url(./media/table-background.jpeg);
