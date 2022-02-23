@@ -41,10 +41,12 @@ class Game {
             // }
 
 
-        console.log(this.players);
+        //console.log(this.players);
         
         //console.log(mazzo)
-        console.log(this.cardsInMddle)
+        //console.log(this.cardsInMddle)
+
+
         
     }
 }

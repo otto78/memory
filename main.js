@@ -35,7 +35,9 @@ startBtn.addEventListener('click', ()=>{
         `
         tavolo.after(playerDiv)
 
+    
     })
+
 
 })
 

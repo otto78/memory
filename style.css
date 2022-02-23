@@ -42,3 +42,28 @@ body {
     font-size: 1.5rem;
 
 }
+
+.card-front{
+    height: 100px;
+    width: 70px;
+    border: 3px solid black;
+    border-radius: 8px;
+    background-color: white;
+
+}
+
+.cerchio{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.rombo{
+    height: 30px;
+    width: 30px;
+    transform: rotate(45deg);
+    background-color: black;
+    
+    
+}

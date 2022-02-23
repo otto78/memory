@@ -12,8 +12,8 @@ class Mazzo {
         
         for(let i=0; i<colore.length; i++){
             for(let j=0; j<forma.length; j++){
-                this.cards.push(new Card(colore[i], forma[j]));
-                this.cards.push(new Card(colore[i], forma[j]));         
+                this.cards.push(new Card(forma[j], colore[i]));
+                this.cards.push(new Card(forma[j], colore[i]));         
             }        
         }
 
