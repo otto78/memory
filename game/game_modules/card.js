@@ -6,13 +6,13 @@ class Card {
     }
 
     show(){
-
-        let card = document.createElement('div')
-        card.classList.add('card', 'card-back', 'd-flex', 'justify-content-center', 'align-items-center')
-
-        let cardLogo = document.createElement('div')
-        cardLogo.classList.add('card-logo')
-
+    
+    let card = document.createElement('div')
+    card.classList.add('card', 'card-back', 'd-flex', 'justify-content-center', 'align-items-center')
+    
+    let cardLogo = document.createElement('div')
+    cardLogo.classList.add('card-logo')
+    
         card.append(cardLogo)
         board.append(card)
         
@@ -22,7 +22,8 @@ class Card {
             card.classList.toggle('card-back')
             card.classList.toggle('card-front')
             cardLogo.classList.toggle('card-logo')
-  
+            
+            //Forma
             if(this.forma == "cerchio"){
                 cardLogo.classList.toggle('cerchio')
             }
@@ -30,7 +31,8 @@ class Card {
             if(this.forma == "rombo"){
                 cardLogo.classList.toggle('rombo')
             }
-    
+            
+            // Colore
             if(this.colore == "blu"){
                 card.classList.toggle('border-blu')
                 cardLogo.classList.toggle('shape-blu')
@@ -56,6 +58,8 @@ class Card {
                 cardLogo.classList.toggle('shape-giallo')
             }
 
+            
+           
         })
 
 

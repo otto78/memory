@@ -6,8 +6,8 @@ class Mazzo {
     }
     
     creaMazzo(){
-        let forma =['cerchio', 'rombo',];
-        let colore=['blu', 'giallo', 'verde', 'rosso', 'viola'];
+        let forma = ['cerchio', 'rombo',];
+        let colore = ['blu', 'giallo', 'verde', 'rosso', 'viola'];
        
         
         for(let i=0; i<colore.length; i++){
