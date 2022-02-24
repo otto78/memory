@@ -65,18 +65,18 @@ class Card {
 
     }
 
-    // showBack(){
+    showBack(){
 
-    //     let cardBack = document.createElement('div')
-    //     cardBack.classList.add('card', 'card-back','d-flex', 'justify-content-center', 'align-items-center')
+        let cardBack = document.createElement('div')
+        cardBack.classList.add('card', 'card-back','d-flex', 'justify-content-center', 'align-items-center')
 
-    //     let cardLogo = document.createElement('div')
-    //     cardLogo.classList.add('card-logo')
+        let cardLogo = document.createElement('div')
+        cardLogo.classList.add('card-logo')
         
-    //     cardBack.append(cardLogo)
-    //     board.append(cardBack)
+        cardBack.append(cardLogo)
+        board.append(cardBack)
 
-    // }
+    }
 
     
 
