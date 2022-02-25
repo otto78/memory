@@ -33,6 +33,7 @@ class Game {
         let carteGiocatore = this.players[0].playerCards 
         let idArray =[]
         let idLogoArray = []
+        //let idSpaceArray = []
         
         for(let i=0; i < mazzo.cards.length; i++){
 
@@ -45,38 +46,40 @@ class Game {
             let cardLogo = document.createElement('div')
             cardLogo.setAttribute('id', i+20)
             let idLogo = cardLogo.getAttribute('id') //id del contenuto della card
+
+            
             
             
             card.classList.add('card', 'card-back', 'd-flex', 'justify-content-center', 'align-items-center')            
             cardLogo.classList.add('card-logo') 
             
-            //card.append(cardLogo)
+            
             board.append(card)
             
+            let punteggio = 0 
+
+
             //click sulla carta
-
-
-
             card.addEventListener('click', ()=>{
          
                 mostraCarta(carta, card, cardLogo)
-                //card.removeEventListener()
+               
                 //console.log("Carta: ", carta.forma, carta.colore)
                 //console.log("Id DOM: ", id)
                 //console.log("Indice carta nel mazzo", mazzo.cards.indexOf(carta), "\n\n")
+                //console.log(carteGiocatore)
+                 
+                carteGiocatore.push(carta)
+                idArray.push(id)
+                idLogoArray.push(idLogo)
+                //idSpaceArray.push(id+30)
                 
-                if(carteGiocatore.length < 2){
-                    
-                    carteGiocatore.push(carta)
-                    idArray.push(id)
-                    idLogoArray.push(idLogo)
-                    
-                    //console.log(idArray)
-                    //console.log(idLogoArray)
-                    //console.log("Numero carte Giocatore: ", carteGiocatore.length)
-                    //console.log("Indice carta nell'array giocatore", carteGiocatore.indexOf(carta))
-                    //console.log("Array giocatore: ", carteGiocatore, "\n\n")                   
-                    //console.log("Carta: ", carteGiocatore[0].forma, carteGiocatore[0].colore)
+                //console.log(idArray)
+                //console.log(idLogoArray)
+                //console.log("Numero carte Giocatore: ", carteGiocatore.length)
+                //console.log("Indice carta nell'array giocatore", carteGiocatore.indexOf(carta))
+                //console.log("Array giocatore: ", carteGiocatore, "\n\n")                   
+                //console.log("Carta: ", carteGiocatore[0].forma, carteGiocatore[0].colore)
                     
 
                     
@@ -85,19 +88,25 @@ class Game {
                         && carteGiocatore[0].forma==carteGiocatore[1].forma 
                         && carteGiocatore[0].colore==carteGiocatore[1].colore){
                         
-                            for(let i=0; i<idArray.length; i++){
+                        for(let i=0; i<2; i++){
 
-                                let idCard = document.getElementById(idArray[i])
-                                
-                                
-                                
-                                
-                                idCard.style.opacity =(0.2)
-                            }
+                            let card = document.getElementById(idArray[i])          
                             
-                            console.log('Bravo!')
-                            carteGiocatore =[]
+                            let space = document.createElement('div')
+                            space.classList.add('card')
+                            //space.setAttribute('id', idSpaceArray[i])
 
+                            // let idSpace = space.getAttribute('id')
+                            //card.style.opacity =(0.3)
+                            card.replaceWith(space)
+
+                            
+                        }
+                        
+                        punteggio = punteggio + 1
+                        console.log('Bravo!')
+                        console.log("Punteggio: ", punteggio)
+                        carteGiocatore =[]
                     }
                     
                     if(carteGiocatore[1]){
@@ -125,7 +134,7 @@ class Game {
                             idArray=[]
                         }
                     }   
-                }
+              
             }) // fine evento click
 
 
