@@ -21,6 +21,8 @@ class Game {
 
         this.players.unshift(new Player(player))
         this.cardsInMddle = mazzo
+
+        console.log(mazzo)
        
 
         let board = document.createElement('div')   
@@ -30,106 +32,102 @@ class Game {
         
         let carteGiocatore = this.players[0].playerCards 
         let idArray =[]
-        let idCardLogoArray = []
+        let idLogoArray = []
         
-        for(let i=0; i<20; i++){
+        for(let i=0; i < mazzo.cards.length; i++){
+
             let carta = this.cardsInMddle.cards[i]
-            //carta.show()
             
             let card = document.createElement('div')
             card.setAttribute('id', i)
-            card.classList.add('card', 'card-back', 'd-flex', 'justify-content-center', 'align-items-center')
-            
-            let id = card.getAttribute('id')
+            let id = card.getAttribute('id') //id della card
             
             let cardLogo = document.createElement('div')
             cardLogo.setAttribute('id', i+20)
-            cardLogo.classList.add('card-logo')
-
-            let idCardLogo = cardLogo.getAttribute('id')
-           
-            card.append(cardLogo)
+            let idLogo = cardLogo.getAttribute('id') //id del contenuto della card
+            
+            
+            card.classList.add('card', 'card-back', 'd-flex', 'justify-content-center', 'align-items-center')            
+            cardLogo.classList.add('card-logo') 
+            
+            //card.append(cardLogo)
             board.append(card)
             
-        
+            //click sulla carta
+
+
+
             card.addEventListener('click', ()=>{
          
-                giraCarta(carta, card, cardLogo)
-                
-                
+                mostraCarta(carta, card, cardLogo)
+                //card.removeEventListener()
                 //console.log("Carta: ", carta.forma, carta.colore)
-                
                 //console.log("Id DOM: ", id)
-                
-                
-                
                 //console.log("Indice carta nel mazzo", mazzo.cards.indexOf(carta), "\n\n")
                 
                 if(carteGiocatore.length < 2){
                     
                     carteGiocatore.push(carta)
                     idArray.push(id)
-                    idCardLogoArray.push(idCardLogo)
+                    idLogoArray.push(idLogo)
                     
-                    console.log(idArray)
-                    console.log(idCardLogoArray)
+                    //console.log(idArray)
+                    //console.log(idLogoArray)
                     //console.log("Numero carte Giocatore: ", carteGiocatore.length)
                     //console.log("Indice carta nell'array giocatore", carteGiocatore.indexOf(carta))
-                    console.log("Array giocatore: ", carteGiocatore, "\n\n")                   
+                    //console.log("Array giocatore: ", carteGiocatore, "\n\n")                   
                     //console.log("Carta: ", carteGiocatore[0].forma, carteGiocatore[0].colore)
-                    //if(carteGiocatore[1]){console.log("Carta: ", carteGiocatore[1].forma, carteGiocatore[1].colore)}
+                    
 
+                    
 
                     if(carteGiocatore[1] 
                         && carteGiocatore[0].forma==carteGiocatore[1].forma 
                         && carteGiocatore[0].colore==carteGiocatore[1].colore){
                         
-                        console.log('Bravo!')
+                            for(let i=0; i<idArray.length; i++){
 
+                                let idCard = document.getElementById(idArray[i])
+                                
+                                
+                                
+                                
+                                idCard.style.opacity =(0.2)
+                            }
+                            
+                            console.log('Bravo!')
+                            carteGiocatore =[]
+
+                    }
                     
-                    }else if(carteGiocatore[1]){
+                    if(carteGiocatore[1]){
                         if(carteGiocatore[0].forma!=carteGiocatore[1].forma 
                             || carteGiocatore[0].colore!=carteGiocatore[1].colore){
                                 
-                                for(let i=0; i<idArray.length; i++){
+                            for(let i=0; i<2; i++){
                                     
-                                    let idCard = document.getElementById(idArray[i])
-                                    let idCardLogo = document.getElementById(idCardLogoArray[i])
-
-                                    giraCarta(carta, idCard, idCardLogo)
-
-                                    // idCard.classList.replace('card-front', 'card-back')
-                                    
-                                    // //console.log(idCardLogo)
-                                    // idCardLogo.classList.remove('cerchio','rombo')
-                                    // //idCardLogo.classList.add('card-logo')
-                                    
-
-
-                                }
+                                let card = document.getElementById(idArray[i])
+                                let cardLogo = document.getElementById(idLogoArray[i])
+                                carta = carteGiocatore[i]
+                                console.log(carta)
                                 
-                                carteGiocatore =[]
-                                idArray=[]
-                                idCardLogoArray =[]
-
-
-
+                                // console.log(idCard)
+                                // console.log(idCardLogo)
+                                //setTimeout(giraCarta, 1000)
+                                giraCarta(carta, card, cardLogo)
+                                
                             }
-
-                    }
-                   
+                            
+                            
+                            console.log("Array giocatore: ", carteGiocatore, "\n\n")
+                            carteGiocatore =[]
+                            idLogoArray =[]
+                            idArray=[]
+                        }
+                    }   
                 }
-                
-                
-
-            
-                
-                
-                
-                
-                
-                
             }) // fine evento click
+
 
 
         
@@ -137,13 +135,90 @@ class Game {
         
         } // fine ciclo for
 
+        
     
-    console.log(mazzo)
+    
+    
+    
+
+
+
+
+
    
-    
+        function mostraCarta(carta, card, cardLogo){
+        card.classList.replace('card-back', 'card-front')
+        card.append(cardLogo)
+        carta.forma == 'cerchio' ? cardLogo.classList.add('cerchio') : cardLogo.classList.add( 'rombo');
 
+        // Colore
+        if(carta.colore == "blu"){
+            card.classList.add('border-blu')
+            cardLogo.classList.add('shape-blu')
+        }
 
-    function giraCarta(carta, card, cardLogo){
+        if(carta.colore == "verde"){
+            card.classList.add('border-verde')
+            cardLogo.classList.add('shape-verde')
+        }
+
+        if(carta.colore == "rosso"){
+            card.classList.add('border-rosso')
+            cardLogo.classList.add('shape-rosso')
+        }
+
+        if(carta.colore == "viola"){
+            card.classList.add('border-viola')
+            cardLogo.classList.add('shape-viola')
+        }
+
+        if(carta.colore == "giallo"){
+            card.classList.add('border-giallo')
+            cardLogo.classList.add('shape-giallo')
+        }
+
+        
+        }
+
+        function giraCarta(carta, card, cardLogo){
+
+        setTimeout(gira, 1000)
+        
+        function gira(){    
+        card.classList.replace('card-front','card-back')
+        
+        cardLogo.remove()
+
+        // Colore
+        if(carta.colore == "blu"){
+            card.classList.remove('border-blu')
+           
+        }
+
+        if(carta.colore == "verde"){
+            card.classList.remove('border-verde')
+           
+        }
+
+        if(carta.colore == "rosso"){
+            card.classList.remove('border-rosso')
+           
+        }
+
+        if(carta.colore == "viola"){
+            card.classList.remove('border-viola')
+           
+        }
+
+        if(carta.colore == "giallo"){
+            card.classList.remove('border-giallo')
+            
+        }
+        }
+        
+        }
+
+        function switchCarta(carta, card, cardLogo){
 
         
 
@@ -178,7 +253,7 @@ class Game {
                     card.classList.toggle('border-giallo')
                     cardLogo.classList.toggle('shape-giallo')
                 }
-    }
+        }
     }
 }
 
