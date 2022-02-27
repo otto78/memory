@@ -51,6 +51,9 @@ class Game {
             cardLogo.setAttribute('id', i+20)
             //let idLogo = cardLogo.getAttribute('id') //id del contenuto della card
 
+            let cartaNonCliccabile = document.createElement('div')
+            cartaNonCliccabile.setAttribute('id', i)
+            cartaNonCliccabile.classList.add('card', 'card-front','d-flex', 'justify-content-center', 'align-items-center')
             
             
             mostraCarta(carta, card, cardLogo)
@@ -79,23 +82,48 @@ class Game {
         function mostraCarta(carta, card, cardLogo){
             
             
-            if (card.classList.contains('card-back')){
-                card.classList.remove('card-back')
-            }
+            // if (card.classList.contains('card-back')){
+            //     card.classList.remove('card-back')
+            // }
             
-            card.classList.add('card-front')
+            // card.classList.add('card-front')
                        
-            //card.classList.replace('card-back', 'card-front')
-            card.append(cardLogo)
+            // //card.classList.replace('card-back', 'card-front')
+            // card.append(cardLogo)
 
+            // carta.forma == 'cerchio' ? cardLogo.classList.add('cerchio') : cardLogo.classList.add( 'rombo');
+            
+            // for(let i=0; i < colore.length; i++){              
+            //     if(carta.colore == colore[i]){
+            //         card.classList.add(`border-${colore[i]}`)
+            //         cardLogo.classList.add(`shape-${colore[i]}`)
+            //     }
+            // }
+
+
+            //tentativo di non far esplodere tutto
+
+            let choosenCard = document.getElementById(mazzo.cards.indexOf(carta))
+
+            //console.log(choosenCard)
+           // carta = carteGiocatore[i]
+            //console.log(carta)                                          
+            let cartaNonCliccabile = document.createElement('div')
+            cartaNonCliccabile.setAttribute('id', mazzo.cards.indexOf(carta))
+            cartaNonCliccabile.classList.add('card', 'card-front','d-flex', 'justify-content-center', 'align-items-center')
+            
+            cartaNonCliccabile.append(cardLogo)
             carta.forma == 'cerchio' ? cardLogo.classList.add('cerchio') : cardLogo.classList.add( 'rombo');
             
             for(let i=0; i < colore.length; i++){              
                 if(carta.colore == colore[i]){
-                    card.classList.add(`border-${colore[i]}`)
+                    cartaNonCliccabile.classList.add(`border-${colore[i]}`)
                     cardLogo.classList.add(`shape-${colore[i]}`)
                 }
             }
+                                
+            choosenCard.replaceWith(cartaNonCliccabile)
+
             
         }
 
@@ -103,7 +131,15 @@ class Game {
 
             setTimeout(gira, 1000)
         
-            function gira(){    
+            function gira(){
+                
+                //tentativo
+                let cartaNonCliccabile = document.getElementById(mazzo.cards.indexOf(carta))
+                //console.log(cartaNonCliccabile)
+                cartaNonCliccabile.replaceWith(card)
+                
+                //
+                
                 card.classList.replace('card-front','card-back')            
                 cardLogo.remove()
                 
@@ -121,7 +157,7 @@ class Game {
             mostraCarta(carta, card, cardLogo)
                
             //console.log("Id DOM: ", id)
-            //console.log("Carta: ", carta.forma, carta.colore)
+            console.log("Carta: ", carta.forma, carta.colore)
             //console.log("Indice carta nel mazzo", mazzo.cards.indexOf(carta), "\n\n")
             //console.log(carteGiocatore)
             let id = card.getAttribute('id') //id della card
@@ -150,21 +186,10 @@ class Game {
 
                         let choosenCard = document.getElementById(idArray[i])
                         carta = carteGiocatore[i]
-                        console.log(carta)
-                        //choosenCard.remove()
-                        //choosenCard.style.opacity =(0.5)
-                        
-                        
-                        
+                        console.log(carta)                                          
                         let space = document.createElement('div')
-                        space.classList.add('card-ghost')
-                        //space.setAttribute('id', idSpaceArray[i])
-
-                        // let idSpace = space.getAttribute('id')
-                        //card.style.opacity =(0.3)
-                        choosenCard.replaceWith(space)
-
-                        
+                        space.classList.add('card-ghost')                      
+                        choosenCard.replaceWith(space)                       
                     }
                     
                     
