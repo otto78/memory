@@ -28,13 +28,12 @@ startBtn.addEventListener('click', ()=>{
         let player = name.value
         nuovaPartita(player)
 
-        let playerDiv = document.createElement('div')
-        playerDiv.classList.add('m-4', 'text-center', 'points', 'fade-in')
-        playerDiv.innerHTML =`
-            <p><span class="mx-3">${player}</span>0<span class="mx-2">|</span>0<span class="mx-3">Computer</span></p>
+        let nomeGiocatore = document.querySelector('#nomeGiocatore')
+        
+        nomeGiocatore.innerHTML = `${player}`
             
-        `
-        tavolo.after(playerDiv)
+        
+        
 
     
     })

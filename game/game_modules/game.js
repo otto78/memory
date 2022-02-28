@@ -35,10 +35,14 @@ class Game {
         let carteGiocatore = this.players[0].playerCards 
         let idArray =[]
         let idLogoArray = []
+        let verifica =[]
         let punteggio = 0
         let errore = 0
         let counter =0
         let turnoCounter = 0
+        let punti = document.querySelector('#punti')
+        punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
+        
         
         
         for(let i=0; i < mazzo.cards.length; i++){
@@ -68,13 +72,20 @@ class Game {
             //click sulla carta
             card.addEventListener('click', ()=>{
                 turno(carta, card, cardLogo)
-            }) 
+            })
+
+
+            
 
         } // fine ciclo for
         
         
     
-    
+            
+            
+            
+            
+            
     
     
 
@@ -168,25 +179,35 @@ class Game {
         function turno(carta, card, cardLogo){
             
             counter++
+
             if(counter%2 != 0){
                 turnoCounter++
-                console.log("\nTurno:", turnoCounter)
+                //console.log("\nTurno:", turnoCounter)
+                
+
             }
+        
+    
             //console.log("turno: ",counter)
 
             mostraCarta(carta, card, cardLogo)
-               
+            
             //console.log("Id DOM: ", id)
-            console.log("Carta: ", carta.forma, carta.colore)
+            //console.log("Carta: ", carta.forma, carta.colore)
             //console.log("Indice carta nel mazzo", mazzo.cards.indexOf(carta), "\n\n")
             //console.log(carteGiocatore)
             let id = card.getAttribute('id') //id della card
             let idLogo = cardLogo.getAttribute('id') //id del contenuto della card
-
+            let numeroCarta = mazzo.cards.indexOf(carta)
+            //console.log(numeroCarta)
+            
             carteGiocatore.push(carta)
             idArray.push(id)
             idLogoArray.push(idLogo)
-            //idSpaceArray.push(id+30)
+            verifica.push(numeroCarta)
+            console.log(verifica)
+
+            
             
             //console.log(idArray)
             //console.log(idLogoArray)
@@ -195,12 +216,24 @@ class Game {
             //console.log("Array giocatore: ", carteGiocatore, "\n\n")                   
             //console.log("Carta: ", carteGiocatore[0].forma, carteGiocatore[0].colore)
                 
+                if(carteGiocatore[1]
+                    && verifica[0] == verifica[1]){
+                        carteGiocatore.pop(carta)
+                        idArray.pop(id)
+                        idLogoArray.pop(idLogo)
+                        verifica.pop(numeroCarta)
+                    }
+
+
+
+
 
                 
                 //Se c'è il match 
                 if(carteGiocatore[1] 
                     && carteGiocatore[0].forma==carteGiocatore[1].forma 
                     && carteGiocatore[0].colore==carteGiocatore[1].colore){
+
                     
                     for(let i=0; i<2; i++){
 
@@ -213,15 +246,18 @@ class Game {
                     }
                     
                     
-                    console.log('Bravo!')
+                    //console.log('Bravo!')
                     
                     carteGiocatore =[]
                     idLogoArray =[]
                     idArray=[]
+                    verifica=[]
                     punteggio++
-                    //punteggio.push(1)
-                    console.log("Punteggio: ", punteggio)
-                    console.log("Errori: ", errore)
+                    
+                    
+                    //console.log("Punteggio: ", punteggio)
+                    //console.log("Errori: ", errore)
+                    punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
                 }
                 
                 //Se non c'è il match
@@ -248,11 +284,19 @@ class Game {
                         carteGiocatore =[]
                         idLogoArray =[]
                         idArray=[]
-                        errore = errore+1
-                        console.log("Punteggio: ", punteggio)
-                        console.log("Errori: ", errore)
+                        verifica=[]
+                        errore++
+                        //console.log("Punteggio: ", punteggio)
+                        //console.log("Errori: ", errore)
+                        punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
 
                     }
+                }
+
+
+                if(punteggio==10){
+                   console.log('hai vinto')
+                   document.location.reload(true) 
                 }
 
         }

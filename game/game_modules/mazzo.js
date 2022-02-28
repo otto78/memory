@@ -8,18 +8,15 @@ class Mazzo {
     creaMazzo(){
         let forma = ['cerchio', 'rombo',];
         let colore = ['blu', 'giallo', 'verde', 'rosso', 'viola'];
-       
-        
+          
         for(let i=0; i<colore.length; i++){
             for(let j=0; j<forma.length; j++){
                 this.cards.push(new Card(forma[j], colore[i]));
                 this.cards.push(new Card(forma[j], colore[i]));         
             }        
         }
-
     }
-    
-    
+      
     mescolaMazzo(){
         let location1, location2, tmp;
         for(let i=0; i<1000; i++){
@@ -27,12 +24,9 @@ class Mazzo {
             location2 = Math.floor((Math.random()*this.cards.length));
             tmp = this.cards[location1]
             this.cards[location1] = this.cards[location2];
-            this.cards[location2] = tmp;
-            
-        }
-        
-    }
-    
+            this.cards[location2] = tmp;           
+        }        
+    }    
 }
 
 export {Mazzo}
