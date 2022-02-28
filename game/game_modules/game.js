@@ -146,11 +146,11 @@ class Game {
                         carta = carteGiocatore[i]                                   
                         let space = document.createElement('div')
                         space.classList.add('card-ghost','d-flex', 'justify-content-center', 'align-items-center', `border-${carteGiocatore[i].colore}`, 'fade-out')
+                        
                         let cardLogo = document.getElementById(idLogoArray[i])
                         space.append(cardLogo)                    
                         
-                        choosenCard.replaceWith(space)                       
-                        
+                        choosenCard.replaceWith(space)                                              
                     }
                   
                     carteGiocatore =[]
@@ -183,9 +183,12 @@ class Game {
                 }
             }
 
-            if(punteggio==10){
-                console.log('hai vinto')
-                document.location.reload(true) 
+            if(punteggio==2){
+                //console.log('hai vinto')
+
+                setTimeout(risultato, 1000)
+
+                //document.location.reload(true) 
             }
         }
 
@@ -193,11 +196,47 @@ class Game {
             punti.innerHTML = `
             <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
             <div>Errori<br><span class="point errori">${errore}</span></div>
-            <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>
-            
-           
+            <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>  
             `
         }
+
+        function risultato(){
+            console.log('hai vinto')
+            let tabellone =document.querySelector('#tabellone')
+            tabellone.remove()
+            let risultato = document.createElement('div')
+            risultato.classList.add('container', 'risultato')
+            risultato.setAttribute('id', 'risultato')
+            risultato.innerHTML=`
+            
+            <div class="row justify-content-center align-items-center">
+                <div class="col-10 col-lg-8 sfondo-risultato shadow rounded-3 border">
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-11 col-sm-8">
+                            <h2 class="text-white">Complimenti!<br>Ce l'hai fatta!</h2>
+                            <p>Ma non hai una gran memoria</p>
+
+                            <button id="startBtn" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
+                            <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-4 px-5 btn btn-dark btn-lg rounded-pill"> Torna indietro</a>
+
+                        </div> 
+                        
+                        <div class="col-11 col-sm-3 p-3 text-center">
+
+                            <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
+                            <div>Errori<br><span class="point errori">${errore}</span></div>
+                            <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>  
+
+                        </div>
+                    </div>    
+                </div>    
+            </div>
+            
+            `
+            
+            board.append(risultato)
+        }
+
     }
 }
 

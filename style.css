@@ -16,6 +16,7 @@ h1, h2{
 
 h2{
     font-size: 2rem!important;
+    font-weight: bolder;
 }
 
 p{
@@ -110,6 +111,15 @@ button, a {
     color: yellow;
 }
 
+
+.risultato{
+    height: 50%;
+    position: fixed;
+    bottom: 25%
+}
+.sfondo-risultato{
+    background-color:rgba(245, 245, 245, 0.187);
+}
 
 .card{
     height: 100px;
