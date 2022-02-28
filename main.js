@@ -2,7 +2,6 @@ import {Card, Mazzo, Player, Game, nuovaPartita} from './game/gioco.js';
 
 let startBtn = document.querySelector('#startBtn');
 let btnContainer = document.querySelector('#btnContainer')
-let tavolo = document.querySelector('#tavolo')
 
 startBtn.addEventListener('click', ()=>{
     
@@ -17,7 +16,6 @@ startBtn.addEventListener('click', ()=>{
     `
     btnContainer.append(input)
 
-
     let startGame = document.querySelector('#startGame')
     let name = document.querySelector('#name')
 
@@ -31,14 +29,7 @@ startBtn.addEventListener('click', ()=>{
         let nomeGiocatore = document.querySelector('#nomeGiocatore')
         
         nomeGiocatore.innerHTML = `${player}`
-            
-        
-        
-
-    
     })
-
-
 })
 
 
