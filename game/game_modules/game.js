@@ -35,13 +35,17 @@ class Game {
         let carteGiocatore = this.players[0].playerCards 
         let idArray =[]
         let idLogoArray = []
-        //let idSpaceArray = []
+        let punteggio = 0
+        let errore = 0
+        let counter =0
+        let turnoCounter = 0
+        
         
         for(let i=0; i < mazzo.cards.length; i++){
-
-            let carta = this.cardsInMddle.cards[i]
             
+            let carta = this.cardsInMddle.cards[i]
             let card = document.createElement('div')
+            
             card.setAttribute('id', i)
             card.classList.add('card', 'd-flex', 'justify-content-center', 'align-items-center')
             //let id = card.getAttribute('id') //id della card
@@ -51,9 +55,9 @@ class Game {
             cardLogo.setAttribute('id', i+20)
             //let idLogo = cardLogo.getAttribute('id') //id del contenuto della card
 
-            let cartaNonCliccabile = document.createElement('div')
-            cartaNonCliccabile.setAttribute('id', i)
-            cartaNonCliccabile.classList.add('card', 'card-front','d-flex', 'justify-content-center', 'align-items-center')
+            // let cartaNonCliccabile = document.createElement('div')
+            // cartaNonCliccabile.setAttribute('id', i)
+            // cartaNonCliccabile.classList.add('card', 'card-front','d-flex', 'justify-content-center', 'align-items-center')
             
             
             mostraCarta(carta, card, cardLogo)
@@ -61,13 +65,13 @@ class Game {
             
             
 
-
             //click sulla carta
             card.addEventListener('click', ()=>{
                 turno(carta, card, cardLogo)
             }) 
-        } // fine ciclo for
 
+        } // fine ciclo for
+        
         
     
     
@@ -82,47 +86,49 @@ class Game {
         function mostraCarta(carta, card, cardLogo){
             
             
-            // if (card.classList.contains('card-back')){
-            //     card.classList.remove('card-back')
-            // }
+            if (card.classList.contains('card-back')){
+                card.classList.remove('card-back')
+            }
             
-            // card.classList.add('card-front')
+            card.classList.add('card-front')
                        
-            // //card.classList.replace('card-back', 'card-front')
-            // card.append(cardLogo)
+            //card.classList.replace('card-back', 'card-front')
+            card.append(cardLogo)
 
-            // carta.forma == 'cerchio' ? cardLogo.classList.add('cerchio') : cardLogo.classList.add( 'rombo');
-            
-            // for(let i=0; i < colore.length; i++){              
-            //     if(carta.colore == colore[i]){
-            //         card.classList.add(`border-${colore[i]}`)
-            //         cardLogo.classList.add(`shape-${colore[i]}`)
-            //     }
-            // }
-
-
-            //tentativo di non far esplodere tutto
-
-            let choosenCard = document.getElementById(mazzo.cards.indexOf(carta))
-
-            //console.log(choosenCard)
-           // carta = carteGiocatore[i]
-            //console.log(carta)                                          
-            let cartaNonCliccabile = document.createElement('div')
-            cartaNonCliccabile.setAttribute('id', mazzo.cards.indexOf(carta))
-            cartaNonCliccabile.classList.add('card', 'card-front','d-flex', 'justify-content-center', 'align-items-center')
-            
-            cartaNonCliccabile.append(cardLogo)
             carta.forma == 'cerchio' ? cardLogo.classList.add('cerchio') : cardLogo.classList.add( 'rombo');
             
             for(let i=0; i < colore.length; i++){              
                 if(carta.colore == colore[i]){
-                    cartaNonCliccabile.classList.add(`border-${colore[i]}`)
+                    card.classList.add(`border-${colore[i]}`)
                     cardLogo.classList.add(`shape-${colore[i]}`)
                 }
             }
+
+
+            //tentativo di non far esplodere tutto
+
+            // let choosenCard = document.getElementById(mazzo.cards.indexOf(carta))
+
+            // //console.log(choosenCard)
+          
+            // //console.log(carta)                                          
+            // let cartaNonCliccabile = document.createElement('div')
+            // cartaNonCliccabile.setAttribute('id', mazzo.cards.indexOf(carta))
+            // cartaNonCliccabile.classList.add('card', 'card-front','d-flex', 'justify-content-center', 'align-items-center')
+
+            
+            // //card.replaceWith(cartaNonCliccabile)
+            // cartaNonCliccabile.append(cardLogo)
+            // carta.forma == 'cerchio' ? cardLogo.classList.add('cerchio') : cardLogo.classList.add( 'rombo');
+            
+            // for(let i=0; i < colore.length; i++){              
+            //     if(carta.colore == colore[i]){
+            //         cartaNonCliccabile.classList.add(`border-${colore[i]}`)
+            //         cardLogo.classList.add(`shape-${colore[i]}`)
+            //     }
+            // }
                                 
-            choosenCard.replaceWith(cartaNonCliccabile)
+            // choosenCard.replaceWith(cartaNonCliccabile)
 
             
         }
@@ -134,14 +140,21 @@ class Game {
             function gira(){
                 
                 //tentativo
-                let cartaNonCliccabile = document.getElementById(mazzo.cards.indexOf(carta))
-                //console.log(cartaNonCliccabile)
-                cartaNonCliccabile.replaceWith(card)
+                // let cartaNonCliccabile = document.getElementById(mazzo.cards.indexOf(carta))
+                // //console.log(cartaNonCliccabile)
+                // //cartaNonCliccabile.replaceWith(card)
+                // cartaNonCliccabile.remove()
+                // board.append(card)
+                // console.log(card)
+                // console.log(cartaNonCliccabile)
                 
                 //
                 
-                card.classList.replace('card-front','card-back')            
+                if (card.classList.contains('card-front')){
+                    card.classList.remove('card-front')
+                }           
                 cardLogo.remove()
+                card.classList.add('card-back') 
                 
                 for(let i=0; i < colore.length; i++){                    
                     if(carta.colore == colore[i]){
@@ -153,6 +166,13 @@ class Game {
         }
 
         function turno(carta, card, cardLogo){
+            
+            counter++
+            if(counter%2 != 0){
+                turnoCounter++
+                console.log("\nTurno:", turnoCounter)
+            }
+            //console.log("turno: ",counter)
 
             mostraCarta(carta, card, cardLogo)
                
@@ -186,7 +206,7 @@ class Game {
 
                         let choosenCard = document.getElementById(idArray[i])
                         carta = carteGiocatore[i]
-                        console.log(carta)                                          
+                        //console.log(carta)                                          
                         let space = document.createElement('div')
                         space.classList.add('card-ghost')                      
                         choosenCard.replaceWith(space)                       
@@ -198,6 +218,10 @@ class Game {
                     carteGiocatore =[]
                     idLogoArray =[]
                     idArray=[]
+                    punteggio++
+                    //punteggio.push(1)
+                    console.log("Punteggio: ", punteggio)
+                    console.log("Errori: ", errore)
                 }
                 
                 //Se non c'è il match
@@ -224,6 +248,10 @@ class Game {
                         carteGiocatore =[]
                         idLogoArray =[]
                         idArray=[]
+                        errore = errore+1
+                        console.log("Punteggio: ", punteggio)
+                        console.log("Errori: ", errore)
+
                     }
                 }
 
