@@ -36,7 +36,9 @@ class Game {
         let counter = 0
         let turnoCounter = 0
         let punti = document.querySelector('#punti')
-        punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
+        tabellone(punteggio, errore, turnoCounter)
+
+        //punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
         
         // Partita
         for(let i=0; i < mazzo.cards.length; i++){
@@ -122,35 +124,41 @@ class Game {
             idArray.push(id)
             idLogoArray.push(idLogo)
             verifica.push(numeroCarta)            
-              
+            
+            // Se si clicca la stessa carta
             if(carteGiocatore[1]
                 && verifica[0] == verifica[1]){
                     carteGiocatore.pop(carta)
                     idArray.pop(id)
                     idLogoArray.pop(idLogo)
                     verifica.pop(numeroCarta)
-                 }
+                }
  
-            //Se c'è il match 
+            //Se c'è il match
             if(carteGiocatore[1] 
                 && carteGiocatore[0].forma==carteGiocatore[1].forma 
                 && carteGiocatore[0].colore==carteGiocatore[1].colore){
         
                     for(let i=0; i<2; i++){
-
+                        
                         let choosenCard = document.getElementById(idArray[i])
+                        
                         carta = carteGiocatore[i]                                   
                         let space = document.createElement('div')
-                        space.classList.add('card-ghost')                      
-                        choosenCard.replaceWith(space)                       
-                    }
+                        space.classList.add('card-ghost','d-flex', 'justify-content-center', 'align-items-center', `border-${carteGiocatore[i].colore}`, 'fade-out')
+                        let cardLogo = document.getElementById(idLogoArray[i])
+                        space.append(cardLogo)                    
                         
+                        choosenCard.replaceWith(space)                       
+                        
+                    }
+                  
                     carteGiocatore =[]
                     idLogoArray =[]
                     idArray=[]
                     verifica=[]
                     punteggio++
-                    punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
+                    tabellone(punteggio, errore, turnoCounter)
                 }
                 
             //Se non c'è il match
@@ -171,7 +179,7 @@ class Game {
                     idArray=[]
                     verifica=[]
                     errore++
-                    punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
+                    tabellone(punteggio, errore, turnoCounter)
                 }
             }
 
@@ -179,6 +187,16 @@ class Game {
                 console.log('hai vinto')
                 document.location.reload(true) 
             }
+        }
+
+        function tabellone(punteggio, errore, turnoCounter){
+            punti.innerHTML = `
+            <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
+            <div>Errori<br><span class="point errori">${errore}</span></div>
+            <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>
+            
+           
+            `
         }
     }
 }
