@@ -1,5 +1,6 @@
 import {Player} from './player.js'
 import {Mazzo} from './mazzo.js'
+import {nuovaPartita} from './newGame.js'
 
 
 class Game {
@@ -25,19 +26,22 @@ class Game {
         board.setAttribute("id", "board")
         board.classList.add("row", "justify-content-center", "board")
         let tavolo = document.querySelector('#tavolo')
-        tavolo.append(board)
         
         let carteGiocatore = this.players[0].playerCards 
         let idArray =[]
         let idLogoArray = []
         let verifica =[]
+        let punti = document.querySelector('#punti')
         let punteggio = 0
         let errore = 0
         let counter = 0
         let turnoCounter = 0
-        let punti = document.querySelector('#punti')
+        tavolo.append(board)
+        
+        
+        
         tabellone(punteggio, errore, turnoCounter)
-
+        
         //punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
         
         // Partita
@@ -202,8 +206,8 @@ class Game {
 
         function risultato(){
             console.log('hai vinto')
-            let tabellone =document.querySelector('#tabellone')
-            tabellone.remove()
+            let tabellone = document.querySelector('#tabellone')
+            tabellone.classList.add('d-none')
             let risultato = document.createElement('div')
             risultato.classList.add('container', 'risultato')
             risultato.setAttribute('id', 'risultato')
@@ -213,10 +217,10 @@ class Game {
                 <div class="col-10 col-lg-8 sfondo-risultato shadow rounded-3 border">
                     <div class="row justify-content-center align-items-center">
                         <div class="col-11 col-sm-8">
-                            <h2 class="text-white">Complimenti!<br>Ce l'hai fatta!</h2>
+                            <h2 class="text-white">Complimenti ${player} !<br>Ce l'hai fatta !</h2>
                             <p>Ma non hai una gran memoria</p>
 
-                            <button id="startBtn" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
+                            <button id="replay" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
                             <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-4 px-5 btn btn-dark btn-lg rounded-pill"> Torna indietro</a>
 
                         </div> 
@@ -235,6 +239,14 @@ class Game {
             `
             
             board.append(risultato)
+            
+            let replay = document.querySelector('#replay')
+            replay.addEventListener('click', ()=>{
+                board.remove()
+                nuovaPartita(player)
+                tabellone.classList.remove('d-none')
+                
+            })
         }
 
     }
