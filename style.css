@@ -93,13 +93,25 @@ button, a {
     background-color:rgba(245, 245, 245, 0.063);
 }
 
+
+
 .point{
-    font-size: 3rem;
+    font-size: 2.3rem;
+    font-weight: 600;
+    font-family:'Courier New', Courier, monospace
+
 
 }
 
 .punteggio{
     color: green;
+    
+}
+
+.tempo{
+    color: #0080fe;
+    
+
     
 }
 
@@ -109,6 +121,9 @@ button, a {
 
 .turno{
     color: yellow;
+}
+.flex-basis{
+    flex-basis:100%;
 }
 
 

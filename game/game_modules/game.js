@@ -36,11 +36,44 @@ class Game {
         let errore = 0
         let counter = 0
         let turnoCounter = 0
+
+        
+        // Variabili Gestione timer
+        let time = document.querySelector('time')
+        let sec = 0
+        let min = 0
+        let t
+        
+        //Funzioni timer
+        function tick(){
+            sec++
+            if(sec>=60){
+                sec=0;
+                min++;      
+            }
+        }
+         
+        function add(){
+            tick()
+            time.textContent = (min>9 ? min : '0'+ min) + ':' + (sec>9 ? sec : '0'+ sec)
+            timer()      
+        }
+         
+        function timer(){
+            t = setTimeout(add, 1000)
+        }
+        
+        timer() 
+        
+        
         tavolo.append(board)
         
         
         
+        
+        
         tabellone(punteggio, errore, turnoCounter)
+        
         
         //punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
         
@@ -187,25 +220,28 @@ class Game {
                 }
             }
 
-            if(punteggio==2){
-                //console.log('hai vinto')
-
-                setTimeout(risultato, 1000)
-
-                //document.location.reload(true) 
+            if(punteggio==2){               
+                clearTimeout(t)
+                setTimeout(risultato, 1000)               
             }
         }
 
+
+
+        
         function tabellone(punteggio, errore, turnoCounter){
+            
+
             punti.innerHTML = `
-            <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
-            <div>Errori<br><span class="point errori">${errore}</span></div>
-            <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>  
+                    <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
+                    <div>Errori<br><span class="point errori">${errore}</span></div>
+                    <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>
+                         
             `
         }
 
         function risultato(){
-            console.log('hai vinto')
+            
             let tabellone = document.querySelector('#tabellone')
             tabellone.classList.add('d-none')
             let risultato = document.createElement('div')
@@ -213,28 +249,31 @@ class Game {
             risultato.setAttribute('id', 'risultato')
             risultato.innerHTML=`
             
-            <div class="row justify-content-center align-items-center">
-                <div class="col-10 col-lg-8 sfondo-risultato shadow rounded-3 border">
-                    <div class="row justify-content-center align-items-center">
-                        <div class="col-11 col-sm-8">
-                            <h2 class="text-white">Complimenti ${player} !<br>Ce l'hai fatta !</h2>
-                            <p>Ma non hai una gran memoria</p>
-
-                            <button id="replay" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
-                            <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-4 px-5 btn btn-dark btn-lg rounded-pill"> Torna indietro</a>
-
-                        </div> 
-                        
-                        <div class="col-11 col-sm-3 p-3 text-center">
-
-                            <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
-                            <div>Errori<br><span class="point errori">${errore}</span></div>
-                            <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>  
-
-                        </div>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-10 col-lg-8 sfondo-risultato shadow rounded-3 border">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-11 col-sm-6 ps-3">
+                                <h2 class="text-white pt-3">Complimenti ${player} !<br>Ce l'hai fatta !</h2>
+                                <p id="commento" class="pb-2">Ma non hai una gran memoria</p>
+                                <div class="pt-5 pb-0">
+                                    <button id="replay" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
+                                    <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-4 px-5 btn btn-dark btn-lg rounded-pill"> Torna indietro</a>
+                                </div>
+                            </div> 
+                            
+                            <div class="col-11 col-sm-6 p-2 my-5 text-center border rounded-circle justify-content-center">
+                                <div class="d-flex justify-content-center">
+                                    <div class="m-3">Punti<br><span class="point punteggio">${punteggio}</span></div>
+                                    <div class="m-3">Errori<br><span class="point errori">${errore}</span></div>
+                                </div>
+                                <div class="d-flex justify-content-center">    
+                                    <div class="m-3">Mosse<br><span class="point turno">${turnoCounter}</span></div>
+                                    <div class="m-3">Tempo<br><span class="point tempo">${time.textContent}</span></div>
+                                </div>
+                            </div>
+                        </div>    
                     </div>    
-                </div>    
-            </div>
+                </div>
             
             `
             
@@ -249,6 +288,7 @@ class Game {
             })
         }
 
+        
     }
 }
 
