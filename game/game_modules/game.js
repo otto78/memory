@@ -244,31 +244,66 @@ class Game {
             
             let tabellone = document.querySelector('#tabellone')
             tabellone.classList.add('d-none')
+
             let risultato = document.createElement('div')
             risultato.classList.add('container', 'risultato')
             risultato.setAttribute('id', 'risultato')
+
+            let commento
+            let commento2
+            
+
+            if(turnoCounter==2){
+                commento = 'Hai una memoria di ferro!'
+            }
+
+            if(turnoCounter>2 && turnoCounter<=10){
+                commento = 'Però non hai una gran memoria'
+            }
+
+            if(turnoCounter>10){
+                commento = 'Ma hai una pessima memoria'
+            }
+
+            if (time.textContent<='00:30'){
+                commento2= 'e sei pure una scheggia!'
+            }
+
+            if (time.textContent>'00:30' && time.textContent<'01:00'){
+                commento2= 'ma non sei velocissimo!'
+            }
+            if (time.textContent>='01:00'&& time.textContent<='01:30'){
+                commento2= 'e sei una lumaca!'
+            }
+            if (time.textContent>'01:30'){
+                commento2= 'ma forse avevi preso sonno?!'
+            }
+
+            
+
             risultato.innerHTML=`
             
                 <div class="row justify-content-center align-items-center">
                     <div class="col-10 col-lg-8 sfondo-risultato shadow rounded-3 border">
                         <div class="row justify-content-center align-items-center">
-                            <div class="col-11 col-sm-6 ps-3">
+                            <div class="col-11 col-sm-6 ps-3 my-3">
                                 <h2 class="text-white pt-3">Complimenti ${player} !<br>Ce l'hai fatta !</h2>
-                                <p id="commento" class="pb-2">Ma non hai una gran memoria</p>
+                                <p class="pb-0 mb-0">${commento} ${commento2}</p>
+                                
                                 <div class="pt-5 pb-0">
                                     <button id="replay" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
                                     <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-4 px-5 btn btn-dark btn-lg rounded-pill"> Torna indietro</a>
                                 </div>
                             </div> 
                             
-                            <div class="col-11 col-sm-6 p-2 my-5 text-center border rounded-circle justify-content-center">
-                                <div class="d-flex justify-content-center">
-                                    <div class="m-3">Punti<br><span class="point punteggio">${punteggio}</span></div>
-                                    <div class="m-3">Errori<br><span class="point errori">${errore}</span></div>
+                            <div class="col-11 col-sm-4 my-5 text-center shadowshadow border border-dark rounded-3 m-3 gx-0 justify-content-center bordo-tondo">
+                                <div class="d-flex justify-content-evenly">
+                                    <h2 class="m-0 py-3 flex-basis text-white border border-dark bg-point-verde">Punti<br><span class="point">${punteggio}</span></h2>
+                                    <h2 id="bgErrori" class="m-0 py-3 flex-basis text-white border border-dark">Errori<br><span class="point">${errore}</span></h2>
                                 </div>
-                                <div class="d-flex justify-content-center">    
-                                    <div class="m-3">Mosse<br><span class="point turno">${turnoCounter}</span></div>
-                                    <div class="m-3">Tempo<br><span class="point tempo">${time.textContent}</span></div>
+                                <div class="d-flex justify-content-evenly">    
+                                    <h2 id="bgMosse" class="m-0 py-3 flex-basis text-white border border-dark ">Mosse<br><span class="point">${turnoCounter}</span></h2>
+                                    <h2 id="bgTempo" class="m-0 py-3 flex-basis text-white border border-dark">Tempo<br><span class="point">${time.textContent}</span></h2>
                                 </div>
                             </div>
                         </div>    
@@ -276,8 +311,51 @@ class Game {
                 </div>
             
             `
-            
             board.append(risultato)
+
+            
+            let bgErrori = document.querySelector('#bgErrori')
+            let bgMosse = document.querySelector('#bgMosse')
+            let bgTempo = document.querySelector('#bgTempo')
+            console.log(errore)
+
+            if(errore<1){
+                bgErrori.classList.add('bg-point-verde')
+            }
+
+            if(errore>=1 && errore<5){
+                bgErrori.classList.add('bg-point-giallo')
+            }
+            if(errore>=5){
+                bgErrori.classList.add('bg-point-rosso')
+            }
+
+
+            if(turnoCounter<=2){
+                bgMosse.classList.add('bg-point-verde')
+            }
+
+            if(turnoCounter>2 && turnoCounter<5){
+                bgMosse.classList.add('bg-point-giallo')
+            }
+            if(turnoCounter>=5){
+                bgMosse.classList.add('bg-point-rosso')
+            }
+
+
+            if(time.textContent<'00:10'){
+                bgTempo.classList.add('bg-point-verde')
+            }
+
+            if(time.textContent>='00:10' && time.textContent<'00:30'){
+                bgTempo.classList.add('bg-point-giallo')
+            }
+            if(time.textContent>='00:30'){
+                bgTempo.classList.add('bg-point-rosso')
+            }
+
+
+            
             
             let replay = document.querySelector('#replay')
             replay.addEventListener('click', ()=>{
