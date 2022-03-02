@@ -2,13 +2,11 @@
 @media screen and (max-width: 1200px) {
 
     .points{
-        font-size: 1.5rem;
-       
+        font-size: 1.5rem;       
     }
 
     .point{
-        font-size: 2.1rem;
-        
+        font-size: 2.1rem;       
     }
 
     .flex-basis{
@@ -17,9 +15,7 @@
 
     .flex-basis-time{
         flex-basis: 35%;
-    }
-
-    
+    }  
 }
 
 /* On screens that are 992px or less, */
@@ -53,8 +49,6 @@
 /* On screens that are 768px or less */
 @media screen and (max-width: 767px) {
 
-    
-
     .point{
         font-size: 1.2rem
     } 
@@ -68,30 +62,20 @@
     }
 
     .larghezza-btn{
-        min-width: 140px;
-        
+        min-width: 140px;        
     }
 
     .card{
-
-        /* height: 100px;
-        width: 70px; */
         margin: 20px;
     }
 
     .card-ghost{
-
-        /* height: 100px;
-        width: 70px; */
         margin: 20px
     }
 
     .board{
-
         width: 800px;
     }
-
-
 }
 
 /* On screens that are 475px or less */
@@ -111,21 +95,18 @@
     }
 
     .card{
-
         height: 80px;
         width: 55px;
         margin: 5px;
     }
 
     .card-ghost{
-
         height: 80px;
         width: 55px;
         margin: 5px;
     }
 
     .board{
-
         width: 800px;
     }
 

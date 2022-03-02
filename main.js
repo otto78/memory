@@ -29,9 +29,6 @@ startBtn.addEventListener('click', ()=>{
         btnContainer.remove()
         let player = name.value
         nuovaPartita(player)
-
-        // let tabellone = document.querySelector('#tabellone')
-        // tabellone.classList.replace('d-none', 'fade-in')
         
         let nomeGiocatore = document.querySelector('#nomeGiocatore')
         nomeGiocatore.innerHTML = `${player}`

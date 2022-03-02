@@ -32,23 +32,20 @@ button, a {
     min-width: 220px;
 }
 
-
-
 #tavolo{
     min-height: 70vh;
     background-image: url(./media/table-background.jpeg);
     background-size: cover;
     border: 5px solid rgb(40, 21, 21);
     border-radius: 50px;
-    opacity: 0.8;
-    
+    opacity: 0.8;   
 }
 
 #btnContainer{
-
     background-color: rgba(245, 222, 179, 0.152);
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.255);
 }
+
 #name {
     font-size: 1.3rem!important;
 }
@@ -76,12 +73,10 @@ button, a {
 
 @keyframes fade-out{
     from {
-        opacity:1;
-        
+        opacity:1;        
     }
     to {
-        opacity:0.05;
-        
+        opacity:0.05;       
     }
 }
 
@@ -105,49 +100,36 @@ button, a {
     background-color:rgba(245, 245, 245, 0.063);
 }
 
-.points{
-    
+.points{    
     color:rgba(245, 245, 245, 0.618);
     font-size: 1.5rem;
     background-color:rgba(245, 245, 245, 0.077);
-
 }
 
 .point{
     font-size: 2.5rem;
     font-weight: 600;
     font-family:'Courier New', Courier, monospace;
-
-    
-
-
 }
 
 .bg-point-rosso{
-    background-color: rgba(255, 0, 0, 0.5)
-    
+    background-color: rgba(255, 0, 0, 0.5)   
 }
 
 .bg-point-verde{
-    background-color: rgba(0, 128, 0, 0.5)
-    
+    background-color: rgba(0, 128, 0, 0.5)   
 }
 
 .bg-point-giallo{
-    background-color: rgba(255, 255, 0, 0.5)
-    
+    background-color: rgba(255, 255, 0, 0.5)    
 }
 
 .punteggio{
-    color: green;
-    
+    color: green;    
 }
 
 .tempo{
-    color: #0080fe;
-    
-
-    
+    color: #0080fe;   
 }
 
 .errori{
@@ -161,7 +143,6 @@ button, a {
     flex-basis:100%;
 }
 
-
 .flex-basis-50{
     flex-basis:50%;
 }
@@ -169,8 +150,6 @@ button, a {
 .flex-basis-time{
     flex-basis: auto;
 }
-
-
 
 .sfondo-risultato{
     background-color:rgba(245, 245, 245, 0.187);
@@ -196,51 +175,39 @@ button, a {
     opacity: 0.05;
 }
 
-
-
 .card-front{
-   background-color: white;
-    
+   background-color: white;   
 }
-
-
 
 .card-back:hover{
     background-color: rgb(80, 80, 80);
     box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.454); 
 }
 
-.card-back{
-    
+.card-back{   
     background-color: rgb(38, 38, 38) ;
     background-image: url(./media/time.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 60%;
-    
+    background-size: 60%;   
 }
-
-
 
 .board{
     width: 800px;
 }
 
-
 .cerchio{
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    background-color: black;
-   
+    background-color: black;   
 }
 
 .rombo{
     height: 30px;
     width: 30px;
     transform: rotate(45deg);
-    /* background-color: black;    */
 }
 
 .shape-blu{

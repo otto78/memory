@@ -19,7 +19,7 @@ class Game {
         this.players.unshift(new Player(player))
         this.cardsInMddle = mazzo
 
-        console.log(mazzo) //stampa delle carte del mazzo per debug
+        //console.log(mazzo) //stampa delle carte del mazzo per debug
         let colore = ['blu', 'giallo', 'verde', 'rosso', 'viola'];
          
         let tavolo = document.querySelector('#tavolo')
@@ -74,9 +74,7 @@ class Game {
         let punti = document.querySelector('#punti')
         tabellaPunti(punteggio, errore, turnoCounter)
         
-        
-       
-        
+
         // Partita
         for(let i=0; i < mazzo.cards.length; i++){
             
@@ -126,8 +124,7 @@ class Game {
             setTimeout(gira, 1000)
         
             function gira(){
-                
-                
+                           
                 if (card.classList.contains('card-front')){
                     card.classList.remove('card-front')
                 }
@@ -142,8 +139,7 @@ class Game {
                         card.classList.remove(`border-${colore[i]}`)
                     }
                 }                     
-            }
-        
+            }        
         }
 
         // Logica di gioco
@@ -227,9 +223,7 @@ class Game {
             }
         }
 
-
-
-        
+    
         function tabellaPunti(punteggio, errore, turnoCounter){
             
             punti.innerHTML = `
@@ -245,7 +239,6 @@ class Game {
             //tabellone.classList.add('d-none')
             fadeAway(tabellone)
             
-
             let risultato = document.createElement('div')
             risultato.classList.add('row', 'justify-content-center', 'align-items-center', 'fade-in')
             risultato.setAttribute('id', 'risultato')
@@ -356,8 +349,7 @@ class Game {
                 bgTempo.classList.add('bg-point-rosso')
             }
 
-
-            
+           
             // pulsante gioca ancora
             let replay = document.querySelector('#replay')
             replay.addEventListener('click', ()=>{
@@ -366,7 +358,6 @@ class Game {
                 nuovaPartita(player) 
             })
         }
-
 
         function fadeAway(el){
             el.classList.replace('fade-in', 'fade-away')
@@ -377,9 +368,7 @@ class Game {
                 el.classList.add('d-none')
                 el.classList.remove('fade-away')
             }
-        }
-
-        
+        }       
     }
 }
 
