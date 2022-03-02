@@ -221,7 +221,7 @@ class Game {
                 }
             }
 
-            if(punteggio==2){               
+            if(punteggio==10){               
                 clearTimeout(t)
                 setTimeout(risultato, 1000)               
             }
@@ -254,29 +254,29 @@ class Game {
             let commento2
             
 
-            if(turnoCounter==2){
+            if(turnoCounter==10){
                 commento = 'Hai una memoria di ferro!'
             }
 
-            if(turnoCounter>2 && turnoCounter<=10){
+            if(turnoCounter>10 && turnoCounter<=30){
                 commento = 'Però non hai una gran memoria'
             }
 
-            if(turnoCounter>10){
+            if(turnoCounter>30){
                 commento = 'Ma hai una pessima memoria'
             }
 
-            if (time.textContent<='00:30'){
+            if (time.textContent<='01:00'){
                 commento2= 'e sei pure una scheggia!'
             }
 
-            if (time.textContent>'00:30' && time.textContent<'01:00'){
+            if (time.textContent>'01:00' && time.textContent<'02:00'){
                 commento2= 'ma non sei velocissimo!'
             }
-            if (time.textContent>='01:00'&& time.textContent<='01:30'){
+            if (time.textContent>='02:00'&& time.textContent<='02:30'){
                 commento2= 'e sei una lumaca!'
             }
-            if (time.textContent>'01:30'){
+            if (time.textContent>'03:00'){
                 commento2= 'ma forse avevi preso sonno?!'
             }
 
@@ -321,38 +321,38 @@ class Game {
             let bgTempo = document.querySelector('#bgTempo')
             console.log(errore)
 
-            if(errore<1){
+            if(errore<5){
                 bgErrori.classList.add('bg-point-verde')
             }
 
-            if(errore>=1 && errore<5){
+            if(errore>=5 && errore<10){
                 bgErrori.classList.add('bg-point-giallo')
             }
-            if(errore>=5){
+            if(errore>=10){
                 bgErrori.classList.add('bg-point-rosso')
             }
 
 
-            if(turnoCounter<=2){
+            if(turnoCounter<=15){
                 bgMosse.classList.add('bg-point-verde')
             }
 
-            if(turnoCounter>2 && turnoCounter<5){
+            if(turnoCounter>15 && turnoCounter<30){
                 bgMosse.classList.add('bg-point-giallo')
             }
-            if(turnoCounter>=5){
+            if(turnoCounter>=30){
                 bgMosse.classList.add('bg-point-rosso')
             }
 
 
-            if(time.textContent<'00:10'){
+            if(time.textContent<'00:30'){
                 bgTempo.classList.add('bg-point-verde')
             }
 
-            if(time.textContent>='00:10' && time.textContent<'00:30'){
+            if(time.textContent>='00:30' && time.textContent<'01:30'){
                 bgTempo.classList.add('bg-point-giallo')
             }
-            if(time.textContent>='00:30'){
+            if(time.textContent>='01:30'){
                 bgTempo.classList.add('bg-point-rosso')
             }
 
@@ -367,7 +367,7 @@ class Game {
             })
         }
 
-        
+
         function fadeAway(el){
             el.classList.replace('fade-in', 'fade-away')
             

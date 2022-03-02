@@ -72,6 +72,26 @@
         
     }
 
+    .card{
+
+        /* height: 100px;
+        width: 70px; */
+        margin: 20px;
+    }
+
+    .card-ghost{
+
+        /* height: 100px;
+        width: 70px; */
+        margin: 20px
+    }
+
+    .board{
+
+        width: 800px;
+    }
+
+
 }
 
 /* On screens that are 475px or less */
@@ -90,4 +110,31 @@
         padding: 0!important;
     }
 
+    .card{
+
+        height: 80px;
+        width: 55px;
+        margin: 5px;
+    }
+
+    .card-ghost{
+
+        height: 80px;
+        width: 55px;
+        margin: 5px;
+    }
+
+    .board{
+
+        width: 800px;
+    }
+
+    .cerchio{
+        height: 30px;
+        width: 30px;
+    }
+
+    .rombo{
+        height: 23px;
+        width: 23px;}
 }
