@@ -1,0 +1,93 @@
+/* On screens that are 1200px or less */
+@media screen and (max-width: 1200px) {
+
+    .points{
+        font-size: 1.5rem;
+       
+    }
+
+    .point{
+        font-size: 2.1rem;
+        
+    }
+
+    .flex-basis{
+        flex-basis:65%;
+    }
+
+    .flex-basis-time{
+        flex-basis: 35%;
+    }
+
+    
+}
+
+/* On screens that are 992px or less, */
+@media screen and (max-width: 992px) {
+
+    .points{
+        font-size: 1rem;
+    }
+
+    .point{
+        font-size: 1.5rem
+    }
+
+    .flex-basis{
+        flex-basis:65%;
+    }
+
+    .flex-basis-time{
+        flex-basis: 35%;
+    }
+
+    p{
+        font-size: 1.5rem;
+    }
+
+    h2{
+        font-size: 1.8rem!important;
+    }
+}
+
+/* On screens that are 768px or less */
+@media screen and (max-width: 767px) {
+
+    
+
+    .point{
+        font-size: 1.2rem
+    } 
+
+    h2{
+        font-size: 1.4rem!important;
+    }
+    
+    p{
+        font-size: 1.2rem;
+    }
+
+    .larghezza-btn{
+        min-width: 140px;
+        
+    }
+
+}
+
+/* On screens that are 475px or less */
+@media screen and (max-width: 476px) {
+
+    .points{
+        font-size: 0.5rem;
+    }
+
+    .point{
+        font-size: 0.8rem
+    }
+
+    h2{
+        font-size: 0.8rem!important;
+        padding: 0!important;
+    }
+
+}

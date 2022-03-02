@@ -246,7 +246,7 @@ class Game {
             tabellone.classList.add('d-none')
 
             let risultato = document.createElement('div')
-            risultato.classList.add('container', 'risultato')
+            risultato.classList.add('row', 'justify-content-center', 'align-items-center')
             risultato.setAttribute('id', 'risultato')
 
             let commento
@@ -283,16 +283,16 @@ class Game {
 
             risultato.innerHTML=`
             
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-10 col-lg-8 sfondo-risultato shadow rounded-3 border">
+                
+                    <div class="col-11 col-lg-10 sfondo-risultato shadow rounded-3 border">
                         <div class="row justify-content-center align-items-center">
                             <div class="col-11 col-sm-6 ps-3 my-3">
-                                <h2 class="text-white pt-3">Complimenti ${player} !<br>Ce l'hai fatta !</h2>
+                                <h2 class="text-white pt-3">Complimenti ${player}!<br>Ce l'hai fatta!</h2>
                                 <p class="pb-0 mb-0">${commento} ${commento2}</p>
                                 
-                                <div class="pt-5 pb-0">
-                                    <button id="replay" type="button" class="my-4 px-5 btn btn-dark btn-lg rounded-pill">Gioca ancora</button>
-                                    <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-4 px-5 btn btn-dark btn-lg rounded-pill"> Torna indietro</a>
+                                <div class="pt-lg-3 pb-0">
+                                    <button id="replay" type="button" class="my-2 my-xxl-4 px-1 px-md-5 btn btn-dark btn-md-lg rounded-pill larghezza-btn">Gioca ancora</button>
+                                    <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-2 my-xxl-4 px-1 px-md-5 btn btn-dark btn-md-lg rounded-pill larghezza-btn"> Torna indietro</a>
                                 </div>
                             </div> 
                             
@@ -308,10 +308,11 @@ class Game {
                             </div>
                         </div>    
                     </div>    
-                </div>
+                
             
             `
-            board.append(risultato)
+            board.remove()
+            tavolo.append(risultato)
 
             
             let bgErrori = document.querySelector('#bgErrori')
