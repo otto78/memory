@@ -22,22 +22,23 @@ class Game {
         console.log(mazzo) //stampa delle carte del mazzo per debug
         let colore = ['blu', 'giallo', 'verde', 'rosso', 'viola'];
          
+        let tavolo = document.querySelector('#tavolo')
         let board = document.createElement('div')   
         board.setAttribute("id", "board")
-        board.classList.add("row", "justify-content-center", "board")
-        let tavolo = document.querySelector('#tavolo')
+        board.classList.add("row", "justify-content-center", "board", 'fade-in')
         
+        //variabili gestione turno
         let carteGiocatore = this.players[0].playerCards 
         let idArray =[]
         let idLogoArray = []
         let verifica =[]
-        let punti = document.querySelector('#punti')
+        
+        // Variabili gestione punteggio
         let punteggio = 0
         let errore = 0
         let counter = 0
         let turnoCounter = 0
-
-        
+   
         // Variabili Gestione timer
         let time = document.querySelector('time')
         let sec = 0
@@ -52,30 +53,29 @@ class Game {
                 min++;      
             }
         }
-         
+        
         function add(){
             tick()
             time.textContent = (min>9 ? min : '0'+ min) + ':' + (sec>9 ? sec : '0'+ sec)
             timer()      
         }
-         
+        
         function timer(){
             t = setTimeout(add, 1000)
         }
         
         timer() 
-        
-        
+                
         tavolo.append(board)
         
+        let tabellone = document.querySelector('#tabellone')
+        tabellone.classList.replace('d-none', 'fade-in')
+        
+        let punti = document.querySelector('#punti')
+        tabellaPunti(punteggio, errore, turnoCounter)
         
         
-        
-        
-        tabellone(punteggio, errore, turnoCounter)
-        
-        
-        //punti.innerHTML = `Punteggio: ${punteggio}, Errori: ${errore}, Turno: ${turnoCounter}`
+       
         
         // Partita
         for(let i=0; i < mazzo.cards.length; i++){
@@ -145,6 +145,7 @@ class Game {
             }
         
         }
+
         // Logica di gioco
         function turno(carta, card, cardLogo){
             
@@ -195,7 +196,7 @@ class Game {
                     idArray=[]
                     verifica=[]
                     punteggio++
-                    tabellone(punteggio, errore, turnoCounter)
+                    tabellaPunti(punteggio, errore, turnoCounter)
                 }
                 
             //Se non c'è il match
@@ -216,7 +217,7 @@ class Game {
                     idArray=[]
                     verifica=[]
                     errore++
-                    tabellone(punteggio, errore, turnoCounter)
+                    tabellaPunti(punteggio, errore, turnoCounter)
                 }
             }
 
@@ -229,24 +230,24 @@ class Game {
 
 
         
-        function tabellone(punteggio, errore, turnoCounter){
+        function tabellaPunti(punteggio, errore, turnoCounter){
             
-
             punti.innerHTML = `
-                    <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
-                    <div>Errori<br><span class="point errori">${errore}</span></div>
-                    <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>
+                <div>Punti<br><span class="point punteggio">${punteggio}</span></div>
+                <div>Errori<br><span class="point errori">${errore}</span></div>
+                <div>Mosse<br><span class="point turno">${turnoCounter}</span></div>
                          
             `
         }
 
         function risultato(){
             
-            let tabellone = document.querySelector('#tabellone')
-            tabellone.classList.add('d-none')
+            //tabellone.classList.add('d-none')
+            fadeAway(tabellone)
+            
 
             let risultato = document.createElement('div')
-            risultato.classList.add('row', 'justify-content-center', 'align-items-center')
+            risultato.classList.add('row', 'justify-content-center', 'align-items-center', 'fade-in')
             risultato.setAttribute('id', 'risultato')
 
             let commento
@@ -280,7 +281,6 @@ class Game {
             }
 
             
-
             risultato.innerHTML=`
             
                 
@@ -288,11 +288,11 @@ class Game {
                         <div class="row justify-content-center align-items-center">
                             <div class="col-11 col-sm-6 ps-3 my-3">
                                 <h2 class="text-white pt-3">Complimenti ${player}!<br>Ce l'hai fatta!</h2>
-                                <p class="pb-0 mb-0">${commento} ${commento2}</p>
+                                <p class="mb-5 mb-sm-3">${commento} ${commento2}</p>
                                 
                                 <div class="pt-lg-3 pb-0">
-                                    <button id="replay" type="button" class="my-2 my-xxl-4 px-1 px-md-5 btn btn-dark btn-md-lg rounded-pill larghezza-btn">Gioca ancora</button>
-                                    <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-2 my-xxl-4 px-1 px-md-5 btn btn-dark btn-md-lg rounded-pill larghezza-btn"> Torna indietro</a>
+                                    <button id="replay" type="button" class="my-2 my-xxl-4 px-1 px-md-5 btn btn-dark rounded-pill larghezza-btn">Gioca ancora</button>
+                                    <a id="btnNo" href="https://otto78.github.io/hello-world/" target="_blank" class="my-2 my-xxl-4 px-1 px-md-5 btn btn-dark rounded-pill larghezza-btn"> Torna indietro</a>
                                 </div>
                             </div> 
                             
@@ -311,6 +311,7 @@ class Game {
                 
             
             `
+            
             board.remove()
             tavolo.append(risultato)
 
@@ -357,14 +358,25 @@ class Game {
 
 
             
-            
+            // pulsante gioca ancora
             let replay = document.querySelector('#replay')
             replay.addEventListener('click', ()=>{
-                board.remove()
-                nuovaPartita(player)
-                tabellone.classList.remove('d-none')
-                
+               
+                risultato.remove()               
+                nuovaPartita(player) 
             })
+        }
+
+        
+        function fadeAway(el){
+            el.classList.replace('fade-in', 'fade-away')
+            
+            setTimeout(nascondi, 500)
+            
+            function nascondi(){
+                el.classList.add('d-none')
+                el.classList.remove('fade-away')
+            }
         }
 
         

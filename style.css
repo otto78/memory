@@ -20,7 +20,7 @@ h2{
 }
 
 p{
-    
+    line-height: 1;
     font-weight: bolder;
 }
 
@@ -77,14 +77,29 @@ button, a {
 @keyframes fade-out{
     from {
         opacity:1;
-        /* transform: translateY(20px); */
+        
     }
     to {
         opacity:0.05;
-        /* transform: translateY(0); */
+        
     }
 }
 
+.fade-away{
+    animation-name: fade-away;
+    animation-duration: 0.5s;
+}
+
+@keyframes fade-away{
+    from {
+        opacity:1;
+        transform: translateY(0px);
+    }
+    to {
+        opacity:0;
+        transform: translateY(20px);
+    }
+}
 
 #tabellone{
     background-color:rgba(245, 245, 245, 0.063);

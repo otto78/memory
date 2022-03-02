@@ -30,11 +30,10 @@ startBtn.addEventListener('click', ()=>{
         let player = name.value
         nuovaPartita(player)
 
-        let tabellone = document.querySelector('#tabellone')
-        let nomeGiocatore = document.querySelector('#nomeGiocatore')
-
-        tabellone.classList.replace('d-none', 'fade-in')
+        // let tabellone = document.querySelector('#tabellone')
+        // tabellone.classList.replace('d-none', 'fade-in')
         
+        let nomeGiocatore = document.querySelector('#nomeGiocatore')
         nomeGiocatore.innerHTML = `${player}`
     })
 })
